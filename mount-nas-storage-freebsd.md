@@ -1,18 +1,31 @@
 ---
+
 copyright:
-  years: 1994, 2018
-lastupdated: "2018-08-16"
+  years: 1994, 2019
+lastupdated: "2019-02-05"
+
+keywords: NAS, FreeBSD
+
+subcollection: network-attached-storage
+
 ---
 {:deprecated: .deprecated}
- 
-# Mounting NAS Storage in FreeBSD
+{:DomainName: data-hd-keyref="APPDomain"}
+{:DomainName: data-hd-keyref="DomainName"}
+{:external: target="_blank" .external}
+{:external: target="_blank" .external}
+{:pre: .pre}
+{:tip: .tip}
 
-**This service is deprecated**: All instances of this service are deprecated. For more information, contact [sales or support](https://www.ibm.com/cloud-computing/bluemix/contact-us).
+# Mounting NAS Storage in FreeBSD
+{: #mountNASFreeBSD}
+
+All instances of this service are deprecated. For more information, contact [sales or support](https://www.ibm.com/cloud-computing/bluemix/contact-us).
 {:deprecated}
 
 Mounting your NAS Storage to a device that runs on FreeBSD can be done by using a series of simple commands in the command line.
 
-1. Create a folder in FreeBSD to be used to mount NAS with the following command.
+1. Create a folder with the following command.
    ```
    mkdir /local/mountpoint
    ```
@@ -25,7 +38,7 @@ Mounting your NAS Storage to a device that runs on FreeBSD can be done by using 
 3. Enter the NAS password when you are prompted.
 
    **Example**
-   
+
    ```
    [root@freebsdnastest ~]# mkdir /mnt/nas
    [root@freebsdnastest ~]# mount_smbfs -I 10.0.78.87 //SL12345-1@10.0.78.87/SL12345-1 /mnt/nas
@@ -39,7 +52,7 @@ Mounting your NAS Storage to a device that runs on FreeBSD can be done by using 
      ```
      //username@NASIP/username /local/mountpoint smbfs rw,-N,-INASIP 0 0
      ```
-     
+
      **Example `/etc/fstab` output**
      ```
      [root@freebsdnastest ~]# cat /etc/fstab
@@ -66,15 +79,15 @@ Mounting your NAS Storage to a device that runs on FreeBSD can be done by using 
 
 5. Unmount and mount the NAS to verify that it is configured properly.
    1. Unmount the storage.
-   
+
       ```
       [root@freebsdnastest ~]# df -Th /mnt/nas/
       Filesystem   Type    Size    Used   Avail Capacity  Mounted on
       /dev/ada0p2  ufs       1G    624M    302M    67%    /  
       ```
-      
+
    2. Mount the storage.
-      
+
       ```
       root@freebsdnastest ~]# df -Th /mnt/nas/
       Filesystem                          Type     Size    Used   Avail Capacity  Mounted on
